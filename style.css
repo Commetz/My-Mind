@@ -1,30 +1,33 @@
-/* Reset e configurações base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Roboto', sans-serif;
-  background: #121212;
   color: #e0e0e0;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-  background-image: url('https://via.placeholder.com/1600x900/121212/1a1a1a?text=Stone+Texture');
+  background-color: #121212;
+  background-image: url('imagens/textura-velho.png');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   animation: brilho 8s ease-in-out infinite;
 }
 
 body::before {
   content: "";
-  position: fixed;
-  top: 0; left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(18, 18, 18, 0.85);
+  background: rgba(18, 18, 18, 0.85); 
   pointer-events: none;
-  z-index: -2;
+  z-index: -1;
 }
+
 
 @keyframes brilho {
   0% { filter: brightness(0.95); }
@@ -36,23 +39,38 @@ header {
   padding: 40px 20px;
   text-align: center;
   border-bottom: 1px solid #333;
-  background: rgba(18, 18, 18, 0.95);
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  background-color: #121212;
 }
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
 .title {
   font-family: 'Cinzel', serif;
   font-size: 3.5rem;
   letter-spacing: 2px;
   color: #c0c0c0;
-  text-shadow: 2px 2px 4px #000, 0 0 10px rgba(200,200,200,0.3);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
   opacity: 0;
-  animation: titleAppear 2s forwards;
+  animation: titleAppear 2s forwards, titleGlow 2s ease-in-out infinite;
 }
+
 @keyframes titleAppear {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 .subtitle {
   font-size: 1.3rem;
   margin-top: 10px;
@@ -60,6 +78,7 @@ header {
   opacity: 0;
   animation: subtitleAppear 2.5s forwards;
 }
+
 @keyframes subtitleAppear {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -72,6 +91,7 @@ nav {
   flex-wrap: wrap;
   gap: 20px;
 }
+
 nav a {
   text-decoration: none;
   font-size: 1rem;
@@ -80,6 +100,7 @@ nav a {
   border-bottom: 1px solid transparent;
   transition: color 0.3s, border-bottom 0.3s, text-shadow 0.3s;
 }
+
 nav a:hover {
   color: #bbb;
   border-bottom: 1px solid #bbb;
@@ -91,8 +112,13 @@ main {
   margin: 40px auto;
   padding: 0 20px;
 }
+
 section {
-  background: rgba(18, 18, 18, 0.95);
+  background-image: url('imagens/textura-sujeira.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   border: 1px solid #2c2c2c;
   padding: 40px 30px;
   margin-bottom: 40px;
@@ -100,11 +126,26 @@ section {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
   opacity: 0;
   animation: sectionFade 2s forwards;
+  position: relative;
 }
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.95); 
+  pointer-events: none;
+  z-index: -1;
+}
+
 @keyframes sectionFade {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 section:nth-of-type(2) { animation-delay: 0.3s; }
 section:nth-of-type(3) { animation-delay: 0.6s; }
 section:nth-of-type(4) { animation-delay: 0.9s; }
@@ -117,6 +158,7 @@ section h2 {
   color: #d0d0d0;
   text-shadow: 1px 1px 3px #000;
 }
+
 section p {
   font-size: 1.1rem;
   text-align: justify;
@@ -128,6 +170,7 @@ section p {
   text-align: center;
   margin: 20px 0;
 }
+
 .img-container img {
   max-width: 100%;
   border: 1px solid #444;
@@ -136,6 +179,7 @@ section p {
   transition: transform 0.4s, filter 0.4s;
   filter: grayscale(30%);
 }
+
 .img-container img:hover {
   transform: scale(1.03);
   filter: grayscale(0%);
@@ -146,6 +190,7 @@ section p {
   flex-wrap: wrap;
   gap: 30px;
 }
+
 .column {
   flex: 1 1 45%;
   background: rgba(0, 0, 0, 0.7);
@@ -153,6 +198,7 @@ section p {
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
 }
+
 .column h3 {
   font-size: 1.6rem;
   margin-bottom: 10px;
@@ -160,6 +206,7 @@ section p {
   border-bottom: 1px solid #333;
   padding-bottom: 5px;
 }
+
 .column p {
   font-size: 1rem;
   color: #bbb;
@@ -172,11 +219,13 @@ section p {
   height: 180px;
   margin-top: 20px;
 }
+
 .slides {
   display: flex;
   width: 300%;
   transition: transform 0.8s ease-in-out;
 }
+
 .slide {
   flex: 1 0 100%;
   padding: 20px;
@@ -185,14 +234,17 @@ section p {
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
 }
+
 .slide p {
   font-size: 1rem;
   color: #ccc;
 }
+
 .slider-nav {
   text-align: center;
   margin-top: 15px;
 }
+
 .slider-nav button {
   background: #333;
   border: none;
@@ -203,6 +255,7 @@ section p {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .slider-nav button:hover {
   background: #555;
 }
@@ -210,12 +263,14 @@ section p {
 form {
   margin-top: 25px;
 }
+
 form label {
   display: block;
   margin-bottom: 8px;
   font-size: 1rem;
   color: #aaa;
 }
+
 form input, form textarea {
   width: 100%;
   padding: 12px;
@@ -226,10 +281,12 @@ form input, form textarea {
   color: #ddd;
   font-size: 1rem;
 }
+
 form input:focus, form textarea:focus {
   outline: none;
   border-color: #666;
 }
+
 form button {
   background: #444;
   padding: 12px 25px;
@@ -240,6 +297,7 @@ form button {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 form button:hover {
   background: #666;
 }
@@ -259,6 +317,7 @@ form button:hover {
   transition: background 0.3s;
   z-index: 10;
 }
+
 .btn-contact:hover {
   background: #666;
 }
@@ -274,16 +333,56 @@ footer {
   box-shadow: 0 -4px 10px rgba(0,0,0,0.8);
 }
 
-@media (min-width: 768px) {
-  .title { font-size: 4rem; }
-  .subtitle { font-size: 1.5rem; }
-  section h2 { font-size: 2.5rem; }
-  section p { font-size: 1.15rem; }
-  .columns { gap: 40px; }
-  .column { flex: 1 1 40%; }
+@media (max-width: 768px) {
+  body {
+    padding: 0 10px;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  section p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .column {
+    flex: 1 1 100%;
+    padding: 15px;
+  }
+
+  .slider {
+    height: auto;
+  }
+
+  .slider-nav button {
+    padding: 10px 20px;
+  }
+
+  form input, form textarea {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
 }
 
-/* Animações de "vagalumes" (luzes em movimento) */
 .fireflies {
   position: fixed;
   top: 0;
@@ -293,22 +392,24 @@ footer {
   pointer-events: none;
   z-index: 999;
 }
+
 .firefly {
   position: absolute;
-  width: 10px; /* Aumentando o tamanho dos vaga-lumes */
-  height: 10px; /* Aumentando o tamanho dos vaga-lumes */
+  width: 10px;
+  height: 10px;
   background: rgba(255, 255, 0, 0.8);
   border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(255, 255, 100, 0.7);
+  box-shadow: 0 0 8px 2px rgba(255, 255, 100, 0.7), 0 0 15px 5px rgba(255, 255, 0, 0.6); 
   opacity: 0;
   animation-name: firefly;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
 @keyframes firefly {
   0% { transform: translate(0, 0); opacity: 0; }
   10% { opacity: 0.8; }
-  50% { transform: translate(30px, -30px); opacity: 1; } /* Aumentando o movimento */
+  50% { transform: translate(30px, -30px); opacity: 1; }
   90% { opacity: 0.8; }
   100% { transform: translate(0, 0); opacity: 0; }
 }
