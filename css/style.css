@@ -1,5 +1,13 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+   margin: 0; 
+   padding: 0; 
+   box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #e0e0e0;
@@ -423,4 +431,132 @@ footer {
   50% { transform: translate(30px, -30px); opacity: 1; }
   90% { opacity: 0.8; }
   100% { transform: translate(0, 0); opacity: 0; }
+}
+
+.search-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#search {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #444;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 5px;
+  outline: none;
+}
+
+#search:focus {
+  border-color: #888;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.category-button {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #777;
+}
+
+.friend-name {
+  cursor: pointer;
+  text-decoration: none;
+  color: #f9f9f9;
+}
+
+.friend-name:hover {
+  color: #555; 
+}
+
+.friend-description {
+  display: none; 
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+  border-left: 3px solid #007bff;
+  font-size: 1rem;
+  color: #555;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+  background-color: #555;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+.modal-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -15px; 
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-toggle-description {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #888;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-toggle-description:hover {
+  background-color: #333;
+}
+
+.btn-toggle-description.activated {
+  background-color: #333;
+}
+
+.person-photo {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 20px;
 }
