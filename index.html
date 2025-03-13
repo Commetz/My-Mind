@@ -22,11 +22,6 @@
       <a href="paginas/relacionamentos.html">Relacionamentos</a>
     </nav>
   </header>
-
-  <audio id="bgMusic" autoplay loop>
-    <source src="sons/sozinhho.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio HTML5.
-  </audio>  
   
   <main>
 
@@ -136,14 +131,6 @@
         generateFirefly();
       }
     };
-
-    const audio = document.getElementById('bgMusic');
-    const muteButton = document.getElementById('button');
-
-    muteButton.addEventListener('click', () => {
-      audio.muted = !audio.muted;
-      muteButton.textContent = audio.muted ? "🔇" : "🔊";
-    });
   </script>
 </body>
 </html>
