@@ -6,27 +6,65 @@
   <title>My Mind</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/gray.css">
-  <link rel="icon" href="../imagens/cerebro.png" type="image/png"/>
+  <link rel="icon" href="../imagens/cerebro.png" type="image/png" />
 </head>
+
 <body>
   <header>
     <div class="title">Relacionamentos</div>
     <div class="subtitle">My Mind</div>
     <nav>
       <a href="../index.html">Introdução</a>
-      <a href="#nada">Nada</a>
+      <a href="#menu">Menu</a>
+      <a href="#categorias">Categorias</a>
       <a href="sobre-mim.html">Sobre Mim</a>
       <a href="pensamentos.html">Pensamentos</a>
       <a href="infancia.html">Infância</a>
       <a href="adolescencia.html">Adolescência</a>
     </nav>
   </header>
+  
   <main>
-    <section id="nada">
-      <h2>Nada</h2>
-      <p>Ainda não há nada aqui.</p>
+      <section id="menu">
+        <h2>Categorias de Relações</h2>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li><strong>Amizades Próximas:</strong> Pessoas com quem você tem um forte vínculo emocional.</li>
+            <li><strong>Amizades Casuais:</strong> Amigos com quem você conversa, mas sem tanta profundidade.</li>
+            <li><strong>Conhecidos:</strong> Pessoas com quem você tem pouco contato, mas reconhece.</li>
+            <li><strong>Família:</strong> Parentes e laços familiares diretos.</li>
+            <li><strong>Colegas de Trabalho:</strong> Pessoas com quem você trabalha diretamente.</li>
+            <li><strong>Contatos Profissionais:</strong> Conexões úteis para oportunidades, networking, etc.</li>
+            <li><strong>Mentores/Superiores:</strong> Pessoas que te guiam no desenvolvimento profissional.</li>
+            <li><strong>Interesses Românticos:</strong> Pessoas por quem você tem interesse amoroso.</li>
+            <li><strong>Relacionamento Atual:</strong> Se estiver namorando ou em um relacionamento sério.</li>
+            <li><strong>Ex-Relacionamentos:</strong> Para manter referência, se necessário.</li>
+            <li><strong>Parceiros de Projeto:</strong> Pessoas com quem você trabalha em projetos específicos.</li>
+            <li><strong>Comunidades/Grupos:</strong> Pessoas que fazem parte de grupos ou hobbies em comum.</li>
+        </ul>
+    </section>
+
+    <section id="categorias">
+        <h2>Categorias de Relações</h2>
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Buscar categoria..." onkeyup="filterCategories()">
+        </div>
+        <div class="button-container" id="category-buttons">
+            <button class="category-button" onclick="location.href='amizades.html'">Amizades Próximas</button>
+            <button class="category-button" onclick="location.href='casuais.html'">Amizades Casuais</button>
+            <button class="category-button" onclick="location.href='conhecidos.html'">Conhecidos</button>
+            <button class="category-button" onclick="location.href='familia.html'">Família</button>
+            <button class="category-button" onclick="location.href='trabalho.html'">Colegas de Trabalho</button>
+            <button class="category-button" onclick="location.href='profissionais.html'">Contatos Profissionais</button>
+            <button class="category-button" onclick="location.href='mentores.html'">Mentores/Superiores</button>
+            <button class="category-button" onclick="location.href='romantico.html'">Interesses Românticos</button>
+            <button class="category-button" onclick="location.href='relacionamento.html'">Relacionamento Atual</button>
+            <button class="category-button" onclick="location.href='ex-relacionamentos.html'">Ex-Relacionamentos</button>
+            <button class="category-button" onclick="location.href='projetos.html'">Parceiros de Projeto</button>
+            <button class="category-button" onclick="location.href='comunidades.html'">Comunidades/Grupos</button>
+        </div>
     </section>
   </main>
+
   <footer>
     &copy; 2025 Gabriel Da Silva Mello. Todos os direitos reservados.
   </footer>
@@ -34,6 +72,20 @@
   <div class="fireflies"></div>
 
   <script>
+    function filterCategories() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let buttons = document.querySelectorAll(".category-button");
+      
+      buttons.forEach(button => {
+        let text = button.innerText.toLowerCase();
+        if (text.includes(input)) {
+          button.style.display = "inline-block";
+        } else {
+          button.style.display = "none";
+        }
+      });
+    }
+
     let currentSlide = 0;
     const slides = document.querySelector('.slides');
     const totalSlides = document.querySelectorAll('.slide').length;
@@ -62,7 +114,7 @@
       }, 0);
 
       const firefliesContainer = document.querySelector('.fireflies');
-      const numberOfFireflies = 7;
+      const numberOfFireflies = 8;
 
       function generateFirefly() {
         const firefly = document.createElement('div');
